@@ -1,0 +1,22 @@
+
+import socket
+import time
+
+TARGET_IP = "172.20.10.5"
+TARGET_PORT = 8888
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+print("UDP start! \n")
+
+while True:
+    message = input("input message:").strip()
+
+    if not message:
+        print("empty message.\n")
+        continue
+
+    sock.sendto(message.encode(), (TARGET_IP, TARGET_PORT))
+    print(f"sending message ->'{message}'\n")
+
+    time.sleep(3)
